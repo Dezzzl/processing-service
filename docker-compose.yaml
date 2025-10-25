@@ -1,0 +1,16 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=proctoring-bot
+      - RABBITMQ_DEFAULT_PASS=proctoring-bot
+    ports:
+      - "5672:5672"  
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/bitnami/rabbitmq/mnesia
+    restart: unless-stopped
+
+volumes:
+  rabbitmq_data:

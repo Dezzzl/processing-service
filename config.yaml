@@ -1,0 +1,21 @@
+connection:
+  host: localhost
+  port: 5672
+  username: proctoring-bot
+  password: proctoring-bot
+
+queues:
+  task_queue:
+    exchange: main_exchange
+    exchange_type: direct
+    routing_key: task_route
+    queue_name: task_queue
+    durable: true
+    prefetch_count: 1
+  notification_queue:
+    exchange: notification_exchange
+    exchange_type: topic
+    routing_key: notify_route
+    queue_name: notification_queue
+    durable: true
+    prefetch_count: 1

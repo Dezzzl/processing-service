@@ -1,0 +1,16 @@
+from .student_sent_lab_handler import StudentSentLabHandler
+
+MESSAGE_HANDLERS = {
+    "StudentSentLabType": StudentSentLabHandler()
+}
+
+def dispatch_message(message: dict):
+    message_type = message.get("messageType")
+    payload = message.get("payload", {})
+
+    handler = MESSAGE_HANDLERS.get(message_type)
+    if handler:
+        print(f"[INFO] Начата обработка сообщения для messageType: {message_type} с payload: {payload}")
+        handler.handle(payload)
+    else:
+        print(f"[WARN] Нет обработчика для messageType: {message_type}")

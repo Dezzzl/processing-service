@@ -10,12 +10,9 @@ app = Flask(__name__)
 
 initialize_queues()
 
-def handle_message(msg):
-    print(f"[Listener] Получено сообщение: {msg}")
-
 def start_listener():
-    listener = RabbitListener(QueueNames.TASK_QUEUE)
-    listener.start_listening(handle_message)
+    listener = RabbitListener(QueueNames.PROCTORING_QUEUE)
+    listener.start_listening()
 
 listener_thread = threading.Thread(target=start_listener, daemon=True)
 listener_thread.start()
@@ -27,7 +24,7 @@ def send_message():
     if not data:
         return jsonify({"error": "No JSON body provided"}), 400
 
-    sender = RabbitSender(QueueNames.TASK_QUEUE)
+    sender = RabbitSender(QueueNames.PROCTORING_QUEUE)
     sender.send(data)
     return jsonify({"status": "Message sent", "data": data})
 

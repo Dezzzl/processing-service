@@ -1,0 +1,75 @@
+@startuml
+
+autonumber "<b>(<u>##</u>)"
+
+actor Student as stud
+
+participant "Proctoring-bot service" as pbs
+participant "Processing service" as ps
+
+
+database PostgreSQL as db
+database Minio as minio
+queue "RabbitMQ" as rmq
+
+'учитель умеет грузить лабу с обязательной читаемой ссылкой на гугл диск, можно будет выкачать файл и залить его в минио
+
+note right stud
+   Задаёт вопрос по лабораторной
+end note
+
+stud -> pbs++ : POST /help ...
+
+pbs -> db++ : select * from intermediate_state
+pbs <-- db-- : IntermediateState
+
+pbs -> pbs: валидация состояния
+
+pbs -> rmq++ : Пуш события UserAsksHelp
+
+note right rmq
+    {
+        "chatId": 1234,
+        "fileKeyId": <UID>,
+        "question": "..."
+    }
+end note
+
+pbs <-- rmq--: ack
+
+stud <-- pbs-- : notify user
+
+' Обработка события UserAsksHelp
+
+rmq -> pbs++ : Пуш события UserAsksHelp
+activate rmq
+
+pbs -> minio++ : ?fileKeyId
+alt
+pbs <-- minio : <FILE>
+else #Pink error
+pbs <-- minio-- : 404 NOT FOUND
+rmq <-- pbs: ack
+end
+
+pbs -> ps++: POST /question
+note right ps
+    тело запроса содержит файл
+    и вопрос пользователя и chatId
+end note
+
+ps -> rmq++: Пуш события UserQuestion
+ps <-- rmq--: ack
+
+alt
+pbs <-- ps--: 202 ACCEPTED
+else #Pink error
+pbs <-- ps--: 4xx-5xx
+rmq <-- pbs : nack
+end
+
+rmq <-- pbs-- : ack
+deactivate rmq
+
+
+@enduml

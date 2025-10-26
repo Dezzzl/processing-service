@@ -1,6 +1,6 @@
 import pika
 
-from config.queue_config import QUEUE_CONFIGS
+from config.rabbit.queue_config import QUEUE_CONFIGS
 
 
 def initialize_queues():

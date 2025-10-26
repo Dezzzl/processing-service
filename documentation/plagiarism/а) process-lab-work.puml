@@ -1,0 +1,69 @@
+@startuml
+
+autonumber "<b>(<u>##</u>)"
+
+actor Student as stud
+
+participant "Proctoring-bot service" as pbs
+participant "Processing service" as ps
+
+participant "Google Drive" as gd
+
+
+database PostgreSQL as db
+database Minio as minio
+queue "RabbitMQ" as rmq
+
+' эта часть уже написана
+
+stud -> pbs++ : POST /lab ...
+
+pbs -> pbs: тут уже что-то\n происходит
+
+pbs -> db++ : select * from intermediate_state
+note right db
+    отсюда нужно получить
+    ссылку на лабораторную работу
+end note
+pbs <-- db-- : IntermediateState
+
+pbs -> pbs: валидация состояния
+
+group transaction
+pbs -> db: insert into labs ...
+pbs <-- db: status
+
+pbs -> gd++ : выкачиваем файл(ы)
+pbs <-- gd-- : <file>
+
+pbs -> minio++ : save <file>
+alt
+pbs <-- minio-- : 200 OK
+else #Pink error
+pbs <-- minio-- : 4xx-5xx
+stud <-- pbs : error
+end
+else #pink rollback
+end group
+
+pbs -> db++ : select fileKeyId from labs\n where subject ILIKE <state.subject>\n and lab_number ILIKE <state.labNumber>\n and userId != <chatId>
+pbs <-- db-- : List<String>
+
+pbs -> rmq++ : Пуш события StudentSentLab
+
+note right rmq
+    {
+        "chatId": 1234,
+        "fileKeyId": <subject.<pokaHz>.labNumber.UUID>,
+        "sameSubjectFilesKeyId": ['file2', 'file1'],
+        "labWorkLink": https://...
+    }
+end note
+
+pbs <-- rmq--: ack
+
+stud <-- pbs-- : notify user
+
+
+
+@enduml

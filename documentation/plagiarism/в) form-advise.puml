@@ -1,0 +1,47 @@
+@startuml
+
+autonumber "<b>(<u>##</u>)"
+
+
+queue "RabbitMQ" as rmq
+
+participant "Proctoring-bot service" as pbs
+participant "Processing service" as ps
+
+participant "LLM" as llm
+participant "Google Drive" as gd
+database Minio as minio
+actor Student as stud
+
+' эта часть уже написана
+
+rmq -> ps++: Пуш события FormAdviceForLaboratoryWork
+
+ps -> minio++ : get <fileForAdvice> by fileKeyId
+ps <-- minio--: <file>
+
+ps -> gd++ : get <labWorkFile> by labWorkLink
+ps <-- gd-- : labWorkFile
+ps -> ps : формирование запроса для LLM
+ps -> llm++ : запрос на получение рекоммендации по LR <context> <fileForAdvice> <labWorkFile>
+ps <-- llm-- : <adviseStr>
+ps -> rmq++ : Пуш события AdviceForLaboratoryWork
+    note left rmq
+        {
+            "chatId": 1234
+            "adviseStr": str,
+        }
+    end note
+ps <-- rmq--: ack
+
+rmq <-- ps-- : ack
+
+' Обработка события UserAnswer
+rmq -> pbs++ : Пуш события AdviceForLaboratoryWork
+rmq++
+rmq <-- pbs : ack
+deactivate rmq
+pbs -> stud : <answer> по chatId
+pbs--
+
+@enduml

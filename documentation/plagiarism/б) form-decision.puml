@@ -1,0 +1,76 @@
+@startuml
+
+autonumber "<b>(<u>##</u>)"
+
+
+queue "RabbitMQ" as rmq
+
+participant "Proctoring-bot service" as pbs
+participant "Processing service" as ps
+
+database Minio as minio
+actor Student as stud
+
+' эта часть уже написана
+
+rmq -> ps++: Пуш события StudentSentLab
+
+ps -> minio++ : get <fileForCheck> by fileKeyId
+ps <-- minio--: <file>
+loop
+ps -> minio: get <suspectFile> by fileKeyId from <sameSubjectFilesKeyId>
+ps <-- minio--: <file>
+ps -> ps: алгоритм поиска совпадений fingerprint
+
+opt совпадение > 70%
+    ps -> rmq++: Пуш PlagiarismResult
+    note left rmq
+        {
+            "decision": "PLAGIARISM_FOUND",
+            "plagiarismFileKeyId": <fileKeyId>
+        }
+
+        break
+    end note
+    ps <-- rmq--: ack
+end opt
+
+end loop
+
+ps -> rmq++: Пуш PlagiarismResult
+    note left rmq
+        {
+            "chatId": 1234
+            "decision": "PLAGIARISM_NOT_FOUND",
+            "plagiarismFileKeyId": <fileKeyId>,
+            "labWorkLink": https://...
+        }
+    end note
+
+rmq <-- ps--: ack
+rmq--
+
+
+rmq -> pbs++ : Пуш события PlagiarismResult
+rmq++
+rmq <-- pbs: ack
+rmq--
+
+alt PLAGIARISM_NOT_FOUND
+pbs -> rmq++ : Пуш события FormAdviceForLaboratoryWork
+    note left rmq
+        {
+            "chatId": 1234
+            "fileKeyId": <fileKeyId>,
+            "labWorkLink": https://...
+        }
+    end note
+pbs <-- rmq--: ack
+pbs -> stud: не плагиат
+else #Pink PLAGIARISM_FOUND
+pbs -> stud: плагиат
+pbs--
+end alt
+
+
+@enduml

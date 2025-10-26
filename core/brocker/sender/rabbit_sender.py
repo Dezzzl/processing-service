@@ -1,6 +1,6 @@
 import pika
 import json
-from config.queue_config import get_queue_config
+from config.rabbit.queue_config import get_queue_config
 
 class RabbitSender:
     def __init__(self, queue_key):

@@ -1,0 +1,41 @@
+@startuml
+
+autonumber "<b>(<u>##</u>)"
+
+queue "RabbitMQ" as rmq
+
+participant "Processing service" as ps
+participant "LLM" as llm
+participant "Proctoring-bot service" as pbs
+
+actor Student as stud
+
+' Обработка события UserQuestion
+
+rmq -> ps++ : Пуш события UserQuestion
+
+ps -> llm++ : <file> + <question>
+ps <-- llm-- : <answer>
+
+ps -> rmq++: Пуш события UserAnswer
+
+note left rmq
+    {
+        "chatId": <UUID>,
+        "answer": <answer>
+    }
+end note
+
+ps <-- rmq--: ack
+
+rmq <-- ps-- : ack
+rmq--
+
+' Обработка события UserAnswer
+rmq -> pbs++ : Пуш события UserAnswer
+rmq++
+rmq <-- pbs : ack
+pbs -> stud : <answer> по chatId
+pbs--
+
+@enduml

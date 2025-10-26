@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 import threading
-from core.utils.rabbit_initializer import initialize_queues
+from config.rabbit.rabbit_initializer import initialize_queues
 from core.brocker.listener.rabbit_listener import RabbitListener
 from core.brocker.sender.rabbit_sender import RabbitSender
-from config.queue_config import QueueNames
+from config.rabbit.queue_config import QueueNames
 
 app = Flask(__name__)
 

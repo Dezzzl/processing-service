@@ -1,7 +1,12 @@
-import yaml
-from core.brocker.queue_names import QueueNames
+import os
 
-with open("config.yaml", "r") as f:
+import yaml
+from service.core.brocker.queue_names import QueueNames
+from service.core.utils.constants import PROJECT_ROOT
+
+config_path = os.path.join(PROJECT_ROOT, "config.yaml")
+
+with open(config_path, "r") as f:
     yaml_data = yaml.safe_load(f)
 
 CONNECTION_CONFIG = yaml_data["connection"]

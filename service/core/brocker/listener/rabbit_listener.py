@@ -1,6 +1,6 @@
 import pika
 import json
-from config.rabbit.queue_config import get_queue_config
+from service.config.rabbit.queue_config import get_queue_config
 
 class RabbitListener:
     def __init__(self, queue_key):

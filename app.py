@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 import threading
-from config.rabbit.rabbit_initializer import initialize_queues
-from core.brocker.listener.rabbit_listener import RabbitListener
-from core.brocker.sender.rabbit_sender import RabbitSender
-from config.rabbit.queue_config import QueueNames
+from service.config.rabbit.rabbit_initializer import initialize_queues
+from service.core.brocker.listener.rabbit_listener import RabbitListener
+from service.core.brocker.sender.rabbit_sender import RabbitSender
+from service.core.brocker.queue_names import QueueNames
+from service.core.client.MinioClient import MinioClient
 
 app = Flask(__name__)
 
@@ -30,5 +31,11 @@ def send_message():
     sender.send(data)
     return jsonify({"status": "Message sent", "data": data})
 
+
 if __name__ == "__main__":
+    client = MinioClient()
+    data = client.get_file_by_id("subject.labwork.123.zip")
+
+    if data:
+        print("Файл успешно получен, размер:", len(data))
     app.run(host="0.0.0.0", port=5000, debug=True)

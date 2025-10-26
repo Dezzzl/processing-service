@@ -19,3 +19,10 @@ queues:
     queue_name: notification_queue
     durable: true
     prefetch_count: 1
+
+minio:
+  endpoint: localhost:9000
+  access_key: proctoring-bot
+  secret_key: proctoring-bot
+  secure: false
+  bucket: proctoring-files

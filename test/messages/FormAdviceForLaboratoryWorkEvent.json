@@ -1,0 +1,8 @@
+{
+  "messageType": "FormAdviceForLaboratoryWorkType",
+  "payload": {
+    "chatId": 1234,
+    "fileKeyId": "lab1_danik.py",
+    "labWorkFileKeyId": "test.txt"
+  }
+}

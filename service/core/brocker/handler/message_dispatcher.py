@@ -1,7 +1,9 @@
+from .form_advice_for_laboratory_work_handler import FormAdviceForLaboratoryWorkHandler
 from .student_sent_lab_handler import StudentSentLabHandler
 
 MESSAGE_HANDLERS = {
-    "StudentSentLabType": StudentSentLabHandler()
+    "StudentSentLabType": StudentSentLabHandler(),
+    "FormAdviceForLaboratoryWorkType": FormAdviceForLaboratoryWorkHandler()
 }
 
 def dispatch_message(message: dict):

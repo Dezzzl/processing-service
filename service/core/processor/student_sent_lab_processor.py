@@ -1,6 +1,5 @@
 import os
 
-
 from service.core.brocker.queue_names import QueueNames
 from service.core.brocker.sender.rabbit_sender import RabbitSender
 from service.core.client.minio_client import MinioClient
@@ -73,19 +72,25 @@ class PlagiarismProcessor:
 
     def _send_plagiarism_found(self, event: StudentSentLabEvent, plagiarism_file_key: str):
         message = {
-            "chatId": event.chat_id,
-            "decision": "PLAGIARISM_FOUND",
-            "plagiarismFileKeyId": plagiarism_file_key,
+            "type": "PlagiarismResultType",
+            "payload": {
+                "chatId": event.chat_id,
+                "decision": "PLAGIARISM_FOUND",
+                "plagiarismFileKeyId": plagiarism_file_key
+            }
         }
         self.result_sender.send(message)
         print(f"[INFO] Отправлено сообщение о найденном плагиате: {message}")
 
     def _send_plagiarism_not_found(self, event: StudentSentLabEvent):
         message = {
-            "chatId": event.chat_id,
-            "decision": "PLAGIARISM_NOT_FOUND",
-            "plagiarismFileKeyId": event.file_key_id,
-            "labWorkLink": f"https://minio/labworks/{event.lab_work_file_key_id}",
+            "type": "PlagiarismResultType",
+            "payload": {
+                "chatId": event.chat_id,
+                "decision": "PLAGIARISM_NOT_FOUND",
+                "plagiarismFileKeyId": event.file_key_id,
+                "labWorkFileKeyId": event.lab_work_file_key_id,
+            }
         }
         self.result_sender.send(message)
         print(f"[INFO] Отправлено сообщение об отсутствии плагиата: {message}")

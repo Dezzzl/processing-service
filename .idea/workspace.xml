@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e79def2d-9cf8-43e2-aa87-de9e08fa9dbc" name="Changes" comment="докумментация + рефакторинг">
+      <change afterPath="$PROJECT_DIR$/service/config/minio/minio_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/config/minio/minio_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/core/brocker/listener/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/core/brocker/sender/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/core/client/MinioClient.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/core/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/core/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/core/utils/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/rabbit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/rabbit/queue_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/config/rabbit/queue_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/rabbit/rabbit_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/config/rabbit/rabbit_initializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/config/minio/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/brocker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/config/rabbit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/brocker/listener/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/brocker/listener/rabbit_listener.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/core/brocker/listener/rabbit_listener.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/brocker/queue_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/core/brocker/queue_names.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/brocker/sender/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/core/brocker/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/brocker/sender/rabbit_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/core/brocker/sender/rabbit_sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Dezzzl"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Dezzzl/processing-service.git",
+    "accountId": "90f41b05-1ac3-4ca4-a8a8-c7083e59fa6c"
+  }
+}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="34YzvCtsAaKCgi2judXmajwKSIP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
+    "HTTP Request.generated-requests | #1.executor": "Run",
+    "Python.app.executor": "Run",
+    "Python.minio_config.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/BSUIR/sem7/kursach/processing-service/documentation/plagiarism",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\BSUIR\sem7\kursach\processing-service\documentation\plagiarism" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\BSUIR\sem7\kursach\processing-service\service" />
+      <recent name="D:\BSUIR\BSUIR\sem7\Курсач\processing-service" />
+      <recent name="D:\BSUIR\BSUIR\sem7\Курсач\processing-service\core\brocker" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="generated-requests | #1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" requestIdentifier="#1" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
+        <item itemvalue="HTTP Request.generated-requests | #1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PY-242.23339.19" />
+        <option value="bundled-python-sdk-0029f7779945-399fe30bd8c1-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-242.23339.19" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e79def2d-9cf8-43e2-aa87-de9e08fa9dbc" name="Changes" comment="" />
+      <created>1761405522006</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1761405522006</updated>
+      <workItem from="1761405523367" duration="5730000" />
+      <workItem from="1761475637649" duration="7628000" />
+    </task>
+    <task id="LOCAL-00001" summary="докумментация + рефакторинг">
+      <option name="closed" value="true" />
+      <created>1761480518702</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1761480518702</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="докумментация + рефакторинг" />
+    <option name="LAST_COMMIT_MESSAGE" value="докумментация + рефакторинг" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/processing_service$minio_config.coverage" NAME="minio_config Coverage Results" MODIFIED="1761482284526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/service/config/minio" />
+    <SUITE FILE_PATH="coverage/processing_service$app.coverage" NAME="app Coverage Results" MODIFIED="1761483440195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

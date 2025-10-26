@@ -1,0 +1,11 @@
+{
+  "messageType": "StudentSentLabType",
+  "payload": {
+    "chatId": 1234,
+    "fileKeyId": "lab1_danik.py",
+    "sameSubjectFilesKeyIds": [
+      "lab1_vasya.py"
+    ],
+    "labWorkFileKeyId": "<subject.labNumber>"
+  }
+}

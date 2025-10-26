@@ -26,6 +26,7 @@ opt совпадение > 70%
     ps -> rmq++: Пуш PlagiarismResult
     note left rmq
         {
+            "chatId": 1234
             "decision": "PLAGIARISM_FOUND",
             "plagiarismFileKeyId": <fileKeyId>
         }

@@ -28,7 +28,6 @@ def send_message():
     sender.send(data)
     return jsonify({"status": "Message sent", "data": data})
 
-
 if __name__ == "__main__":
     client = MinioClient()
     data = client.get_file_by_id("subject.labwork.123.zip")

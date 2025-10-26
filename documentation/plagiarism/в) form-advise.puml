@@ -9,7 +9,6 @@ participant "Proctoring-bot service" as pbs
 participant "Processing service" as ps
 
 participant "LLM" as llm
-participant "Google Drive" as gd
 database Minio as minio
 actor Student as stud
 
@@ -20,8 +19,8 @@ rmq -> ps++: Пуш события FormAdviceForLaboratoryWork
 ps -> minio++ : get <fileForAdvice> by fileKeyId
 ps <-- minio--: <file>
 
-ps -> gd++ : get <labWorkFile> by labWorkLink
-ps <-- gd-- : labWorkFile
+ps -> minio++ : get <labWorkFile> by labWorkFileKeyId
+ps <-- minio-- : labWorkFile
 ps -> ps : формирование запроса для LLM
 ps -> llm++ : запрос на получение рекоммендации по LR <context> <fileForAdvice> <labWorkFile>
 ps <-- llm-- : <adviseStr>

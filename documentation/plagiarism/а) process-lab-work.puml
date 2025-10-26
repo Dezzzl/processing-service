@@ -56,7 +56,7 @@ note right rmq
         "chatId": 1234,
         "fileKeyId": <subject.<pokaHz>.labNumber.UUID>,
         "sameSubjectFilesKeyId": ['file2', 'file1'],
-        "labWorkLink": https://...
+        "labWorkFileKeyId": <subject.labNumber>
     }
 end note
 

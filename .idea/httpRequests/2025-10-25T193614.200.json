@@ -1,7 +1,0 @@
-{
-  "data": {
-    "task": "send_email",
-    "user": "john@example.com"
-  },
-  "status": "Message sent"
-}

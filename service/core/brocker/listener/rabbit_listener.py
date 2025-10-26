@@ -1,4 +1,3 @@
-# service/core/brocker/listner/rabbit_listener.py
 import pika
 import json
 from service.config.rabbit.queue_config import get_queue_config

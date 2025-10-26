@@ -5,11 +5,18 @@ connection:
   password: proctoring-bot
 
 queues:
-  proctoring_queue:
+  proctoring-queue:
     exchange: proctoring-exchange
     exchange_type: direct
     routing_key: proctoring-bot
     queue_name: proctoring-queue
+    durable: true
+    prefetch_count: 1
+  processing-service-queue:
+    exchange: processing-service-exchange
+    exchange_type: direct
+    routing_key: processing-service
+    queue_name: processing-service-queue
     durable: true
     prefetch_count: 1
 

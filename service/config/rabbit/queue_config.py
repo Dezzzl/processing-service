@@ -13,7 +13,8 @@ CONNECTION_CONFIG = yaml_data["connection"]
 QUEUES_CONFIG = yaml_data["queues"]
 
 QUEUE_CONFIGS = {
-    QueueNames.PROCTORING_QUEUE: {**CONNECTION_CONFIG, **QUEUES_CONFIG["proctoring_queue"]}
+    QueueNames.PROCTORING_QUEUE: {**CONNECTION_CONFIG, **QUEUES_CONFIG["proctoring-queue"]},
+    QueueNames.PROCESSING_SERVICE_QUEUE: {**CONNECTION_CONFIG, **QUEUES_CONFIG["processing-service-queue"]}
 }
 
 def get_queue_config(queue_key):

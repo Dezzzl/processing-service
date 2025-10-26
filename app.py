@@ -4,14 +4,14 @@ from service.config.rabbit.rabbit_initializer import initialize_queues
 from service.core.brocker.listener.rabbit_listener import RabbitListener
 from service.core.brocker.sender.rabbit_sender import RabbitSender
 from service.core.brocker.queue_names import QueueNames
-from service.core.client.MinioClient import MinioClient
+from service.core.client.minio_client import MinioClient
 
 app = Flask(__name__)
 
 initialize_queues()
 
 def start_listener():
-    listener = RabbitListener(QueueNames.PROCTORING_QUEUE)
+    listener = RabbitListener(QueueNames.PROCESSING_SERVICE_QUEUE)
     listener.start_listening()
 
 listener_thread = threading.Thread(target=start_listener, daemon=True)

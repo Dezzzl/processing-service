@@ -1,0 +1,10 @@
+{
+  "CYCLE": ["for", "while", "do", "for...of", "for...in"],
+  "CONDITION": ["if", "else if", "else", "switch", "case", "default"],
+  "TYPE": ["Number", "String", "Boolean", "Object", "Array", "Set", "Map", "BigInt", "Symbol", "undefined", "null"],
+  "OPERATOR": ["=", "+", "-", "*", "/", "%", "++", "--", "+=", "-=", "*=", "/=", "%="],
+  "COMPARE": ["==", "!=", "===", "!==", ">", "<", ">=", "<="],
+  "LOGIC": ["&&", "||", "!"],
+  "BUILTIN_FUNC": ["console.log", "Math.abs", "Math.max", "Math.min", "Math.round", "parseInt", "parseFloat", "Number", "String", "Array.isArray", "JSON.stringify", "JSON.parse"],
+  "KEYWORD": ["function", "return", "var", "let", "const", "if", "else", "switch", "case", "default", "for", "while", "do", "break", "continue", "try", "catch", "finally", "throw", "class", "extends", "import", "export", "new", "this", "super"]
+}

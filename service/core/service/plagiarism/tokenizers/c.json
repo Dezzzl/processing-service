@@ -1,0 +1,10 @@
+{
+  "CYCLE": ["for", "while", "do"],
+  "CONDITION": ["if", "else if", "else", "switch", "case", "default"],
+  "TYPE": ["int", "float", "double", "char", "bool", "long", "short", "unsigned", "void"],
+  "OPERATOR": ["=", "+", "-", "*", "/", "%", "++", "--", "+=", "-=", "*=", "/=", "%="],
+  "COMPARE": ["==", "!=", ">", "<", ">=", "<="],
+  "LOGIC": ["&&", "||", "!"],
+  "BUILTIN_FUNC": ["printf", "scanf", "malloc", "free", "sizeof", "exit", "abs"],
+  "KEYWORD": ["auto", "break", "case", "const", "continue", "default", "do", "else", "enum", "extern", "for", "goto", "if", "register", "return", "sizeof", "static", "struct", "switch", "typedef", "union", "volatile", "while"]
+}

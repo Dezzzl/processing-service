@@ -1,0 +1,10 @@
+{
+  "CYCLE": ["for", "while", "do", "for...of", "for...in"],
+  "CONDITION": ["if", "else if", "else", "switch", "case", "default"],
+  "TYPE": ["int", "float", "double", "char", "bool", "long", "short", "unsigned", "string", "vector", "map", "set", "void"],
+  "OPERATOR": ["=", "+", "-", "*", "/", "%", "++", "--", "+=", "-=", "*=", "/=", "%="],
+  "COMPARE": ["==", "!=", ">", "<", ">=", "<="],
+  "LOGIC": ["&&", "||", "!"],
+  "BUILTIN_FUNC": ["std::cout", "std::cin", "std::abs", "std::max", "std::min", "std::round", "std::vector", "std::map", "std::set"],
+  "KEYWORD": ["class", "struct", "enum", "namespace", "using", "return", "new", "delete", "this", "try", "catch", "throw", "break", "continue", "for", "while", "do", "if", "else", "switch", "case", "default", "public", "private", "protected", "virtual", "friend", "const", "static", "template", "typename"]
+}

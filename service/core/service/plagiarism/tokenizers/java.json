@@ -1,0 +1,10 @@
+{
+  "CYCLE": ["for", "while", "do"],
+  "CONDITION": ["if", "else if", "else", "switch", "case", "default"],
+  "TYPE": ["int", "float", "double", "char", "boolean", "String", "long", "short", "byte", "List", "Map", "Set"],
+  "OPERATOR": ["=", "+", "-", "*", "/", "%", "++", "--", "+=", "-=", "*=", "/=", "%="],
+  "COMPARE": ["==", "!=", ">", "<", ">=", "<="],
+  "LOGIC": ["&&", "||", "!"],
+  "BUILTIN_FUNC": ["System.out.println", "Math.abs", "Math.max", "Math.min", "Math.round", "Math.sqrt", "Arrays.asList", "Collections.sort"],
+  "KEYWORD": ["class", "interface", "enum", "extends", "implements", "import", "package", "return", "new", "this", "super", "try", "catch", "finally", "throw", "throws", "break", "continue", "for", "while", "do", "if", "else", "switch", "case", "default", "static", "final", "abstract", "private", "protected", "public"]
+}

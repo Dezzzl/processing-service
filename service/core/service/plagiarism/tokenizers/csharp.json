@@ -1,0 +1,10 @@
+{
+  "CYCLE": ["for", "while", "do", "foreach"],
+  "CONDITION": ["if", "else if", "else", "switch", "case", "default"],
+  "TYPE": ["int", "float", "double", "char", "bool", "string", "long", "short", "byte", "List", "Dictionary", "HashSet"],
+  "OPERATOR": ["=", "+", "-", "*", "/", "%", "++", "--", "+=", "-=", "*=", "/=", "%="],
+  "COMPARE": ["==", "!=", ">", "<", ">=", "<="],
+  "LOGIC": ["&&", "||", "!"],
+  "BUILTIN_FUNC": ["Console.WriteLine", "Math.Abs", "Math.Max", "Math.Min", "Math.Round", "Math.Sqrt", "List.Add", "Dictionary.Add"],
+  "KEYWORD": ["class", "interface", "enum", "namespace", "using", "return", "new", "this", "base", "try", "catch", "finally", "throw", "break", "continue", "for", "while", "do", "foreach", "if", "else", "switch", "case", "default", "static", "readonly", "const", "public", "private", "protected", "internal", "abstract", "virtual", "override", "sealed"]
+}

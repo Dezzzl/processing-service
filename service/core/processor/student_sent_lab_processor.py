@@ -30,30 +30,29 @@ class PlagiarismProcessor:
     def process_event(self, event: StudentSentLabEvent):
         print(f"[INFO] Начата обработка лабораторной работы для chatId={event.chat_id}")
 
-        # Получаем основной файл
+        # Получаем основной файл студента
         file_for_check = self.minio.get_file_by_id(event.file_key_id)
         if not file_for_check:
             print(f"[ERROR] Не удалось получить файл для проверки: {event.file_key_id}")
             return
 
         file_for_check = file_for_check.decode("utf-8")
-
-        # Определяем язык по расширению
-        lang = self._detect_language(event.file_key_id)
-        print(f"[INFO] Определён язык исходного файла: {lang}")
-
-        plagiarism_checker = PlagiarismChecker(lang=lang)
+        lang_a = self._detect_language(event.file_key_id)
+        print(f"[INFO] Определён язык исходного файла: {lang_a}")
 
         # Проверяем против других файлов предмета
         for suspect_key in event.same_subject_files_key_ids:
             print(f"[DEBUG] Проверяем с файлом: {suspect_key}")
             suspect_data = self.minio.get_file_by_id(suspect_key)
-
             if not suspect_data:
                 print(f"[WARN] Не удалось получить файл {suspect_key}, пропускаем.")
                 continue
 
             suspect_code = suspect_data.decode("utf-8")
+            lang_b = self._detect_language(suspect_key)
+
+            # создаём гибридный проверщик под пару языков
+            plagiarism_checker = PlagiarismChecker(lang_a=lang_a, lang_b=lang_b)
 
             result = plagiarism_checker.check(file_for_check, suspect_code)
 
@@ -76,8 +75,8 @@ class PlagiarismProcessor:
             "payload": {
                 "chatId": event.chat_id,
                 "decision": "PLAGIARISM_FOUND",
-                "plagiarismFileKeyId": plagiarism_file_key
-            }
+                "plagiarismFileKeyId": plagiarism_file_key,
+            },
         }
         self.result_sender.send(message)
         print(f"[INFO] Отправлено сообщение о найденном плагиате: {message}")
@@ -90,7 +89,7 @@ class PlagiarismProcessor:
                 "decision": "PLAGIARISM_NOT_FOUND",
                 "plagiarismFileKeyId": event.file_key_id,
                 "labWorkFileKeyId": event.lab_work_file_key_id,
-            }
+            },
         }
         self.result_sender.send(message)
         print(f"[INFO] Отправлено сообщение об отсутствии плагиата: {message}")

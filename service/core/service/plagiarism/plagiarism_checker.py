@@ -9,10 +9,24 @@ class PlagiarismChecker:
     2. При высоком проценте сходства — LLM-анализ для подтверждения/отклонения.
     """
 
-    def __init__(self, lang: str = "python", token_threshold: float = 70.0):
+    def __init__(
+        self,
+        lang_a: str = "python",
+        lang_b: str = "python",
+        token_threshold: float = 70.0,
+    ):
+        self.lang_a = lang_a
+        self.lang_b = lang_b
         self.threshold = token_threshold
-        self.lang = lang
-        self.token_checker = TokenBasedPlagiarismChecker(lang=lang, threshold=token_threshold)
+
+        # Два токенайзера (для разных языков)
+        self.token_checker = TokenBasedPlagiarismChecker(
+            lang_a=self.lang_a,
+            lang_b=self.lang_b,
+            threshold=token_threshold,
+        )
+
+        # LLM — не зависит от языка напрямую, но можно указать в промпте
         self.llm_checker = LLMPlagiarismChecker()
 
     def check(self, code_a: str, code_b: str) -> dict:

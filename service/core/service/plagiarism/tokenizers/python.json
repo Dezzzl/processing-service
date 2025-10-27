@@ -5,8 +5,6 @@
   "OPERATOR": ["=", "+", "-", "*", "/", "%", "//", "**", "+=", "-=", "*=", "/=", "%="],
   "COMPARE": ["==", "!=", ">", "<", ">=", "<="],
   "LOGIC": ["and", "or", "not", "in", "is", "not in", "is not"],
-  "NUMBER": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
   "BUILTIN_FUNC": ["print", "len", "range", "int", "float", "str", "bool", "list", "dict", "set", "tuple", "sum", "min", "max", "abs", "input"],
-  "KEYWORD": ["def", "return", "import", "from", "as", "pass", "break", "continue", "class", "with", "try", "except", "finally", "raise", "lambda", "yield", "global", "nonlocal", "assert", "del"],
-  "IDENTIFIER": []
+  "KEYWORD": ["def", "return", "import", "from", "as", "pass", "break", "continue", "class", "with", "try", "except", "finally", "raise", "lambda", "yield", "global", "nonlocal", "assert", "del"]
 }

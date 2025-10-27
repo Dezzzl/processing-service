@@ -9,7 +9,7 @@ class TokenBasedPlagiarismChecker:
     Теперь поддерживает сравнение кода на разных языках.
     """
 
-    def __init__(self, lang_a: str = "python", lang_b: str = "python", threshold: float = 70.0):
+    def __init__(self, lang_a: str = "python", lang_b: str = "python", threshold: float = 50.0):
         self.lang_a = lang_a
         self.lang_b = lang_b
         self.threshold = threshold

@@ -1,6 +1,10 @@
 from service.core.service.plagiarism.llm_plagiarism_checker import LLMPlagiarismChecker
 from service.core.service.plagiarism.token_plagiarism_checker import TokenBasedPlagiarismChecker
+import time
+import logging
 
+MAX_RETRIES = 3
+RETRY_DELAY_SECONDS = 2
 
 class PlagiarismChecker:
     """
@@ -18,6 +22,7 @@ class PlagiarismChecker:
         self.lang_a = lang_a
         self.lang_b = lang_b
         self.threshold = token_threshold
+        self.logger = logging.getLogger(__name__)
 
         # Два токенайзера (для разных языков)
         self.token_checker = TokenBasedPlagiarismChecker(
@@ -50,9 +55,21 @@ class PlagiarismChecker:
             }
 
         # Шаг 2 — уточняем результат с помощью LLM
-        llm_score = self.llm_checker.check(code_a, code_b)  # float 0-100
+        llm_score = 0.0
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                self.logger.info(f"[INFO] Попытка {attempt}/{MAX_RETRIES} LLM...")
+                llm_score = self.llm_checker.check(code_a, code_b)
+                if llm_score is not None:
+                    break
+            except Exception as e:
+                self.logger.warning(f"[WARN] Ошибка LLM на попытке {attempt}: {e}")
+                if attempt < MAX_RETRIES:
+                    time.sleep(RETRY_DELAY_SECONDS)
+        else:
+            self.logger.error(f"[ERROR] LLM не дал ответ после {MAX_RETRIES} попыток")
+            llm_score = 0.0
 
-        # Определяем финальное решение по LLM-порогам
         final_decision = llm_score >= self.threshold / 100
 
         return {

@@ -42,7 +42,9 @@ class LLMAdviceGenerator:
         )
 
         try:
-            return response.choices[0].message.content.strip()
+            strip = response.choices[0].message.content.strip()
+            print("[INFO] Answer from LLM about advice: " + strip)
+            return strip
         except Exception as e:
             print(f"[LLM ERROR] {e}")
             return "Не удалось получить рекомендацию"

@@ -39,6 +39,7 @@ class LLMPlagiarismChecker:
 
         try:
             raw_text = response.choices[0].message.content
+            print("[INFO] Answer from LLM about plagiarism: " + raw_text)
             import json
             data = json.loads(raw_text)
             return float(data.get("similarity", 0.0))
